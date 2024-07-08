@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Encriptador de texto || Challenge Alura Latam</title>
+  <link rel="shortcut icon" href="./source/logo.svg" type="image/x-icon">
+  <link rel="stylesheet" href="css/style.css">
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <div class="header-img">
+        <img src="./source/logo.svg" alt="Logo Alura">
+      </div>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <div class="encriptador">
+
+        <form class="encriptador-form">
+          <div class="text-in">
+            <textarea name="text-in-area" id="texto" placeholder="Ingrese el texto aqui" required></textarea>
+            <div class="text-in-info">
+              <div class="info">
+                <img src="./source/exclamacion.svg" alt="">
+                <p id="warning">Solo letras minusculas y sin acentos</p>
+              </div>
+              <div class="text-in-btns">
+                <input type="button" id="enc" value="Encriptar">
+                <input type="button" id="dec" value="Desencriptar">
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <div class="text-out-sec">
+          <div class="out-content">
+            <div class="content" id="default">
+              <div class="text-out-img">
+                <img src="./source/muneco.svg" alt="Imagen animada">
+              </div>
+            <p>Ningún mensaje fue encontrado</p>
+            <p>Ingresa el texto que deseas encriptar o desencriptar</p>
+          </div>
+          <div class="content invisible" id="result">
+            <textarea name="text-out-area" id="texto-out" disabled></textarea>
+            <button id="copiar">Copiar</button>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="js/main.js"></script>
+</body>
+</html>
