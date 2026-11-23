@@ -1,17 +1,24 @@
 function encriptar(traduccion){
   document.querySelector('#warning').removeAttribute('style');
   let textarea = document.querySelector('#texto');
-  const texto = textarea.value;
+  let texto = textarea.value;
   let area_default = document.querySelector('#default');
   let area_result = document.querySelector('#result');
   let texto_out = document.querySelector('#texto-out');
+
+  if (texto.trim() === '') {
+    texto_out.value = '';
+    area_default.classList.remove('invisible');
+    area_result.classList.add('invisible');
+    return;
+  }
 
   if (texto != ''){
     let out = '';
 
     for (let i = 0; i < texto.length; i++){
 
-      if(((texto[i] < 'a') || (texto[i] > 'z')) && (texto[i] != '')){
+      if(((texto[i] < 'a') || (texto[i] > 'z')) && (texto[i] != ' ')){
         document.querySelector('#warning').style.color = 'red';
         document.querySelector('#warning').style.fontSize = '16px';
         return;
@@ -37,7 +44,7 @@ function encriptar(traduccion){
     }
     area_default.classList.add('invisible');
     area_result.classList.remove('invisible');
-    texto_out.innerHTML = out;
+    texto_out.value = out;
   }
   return;
 }
@@ -45,15 +52,22 @@ function encriptar(traduccion){
 function desencriptar(traduccion){
   document.querySelector('#warning').removeAttribute('style');
   let textarea = document.querySelector('#texto');
-  const texto = textarea.value;
+  let texto = textarea.value;
   let area_default = document.querySelector('#default');
   let area_result = document.querySelector('#result');
   let texto_out = document.querySelector('#texto-out');
 
+  if (texto.trim() === '') {
+    texto_out.value = '';
+    area_default.classList.remove('invisible');
+    area_result.classList.add('invisible');
+    return;
+  }
+
   if (texto != ''){
     
     for (let i = 0; i < texto.length; i++){
-      if(((texto[i] < 'a') || (texto[i] > 'z')) && (texto[i] != '')){
+      if(((texto[i] < 'a') || (texto[i] > 'z')) && (texto[i] != ' ')){
         document.querySelector('#warning').style.color = 'red';
         document.querySelector('#warning').style.fontSize = '16px';
         return;
@@ -70,14 +84,14 @@ function desencriptar(traduccion){
     texto = texto.replace(new RegExp(traduccion['i'], 'g'), 'i');
     texto = texto.replace(new RegExp(traduccion['o'], 'g'), 'o');
     texto = texto.replace(new RegExp(traduccion['u'], 'g'), 'u');
-    texto_out.innerHTML = texto;
+    texto_out.value = texto;
   }
   return;
 }
 
 function clipboard(){
   const texto_out = document.querySelector('#texto-out');
-  navigator.clipboard.writeText(texto_out.textContent);
+  navigator.clipboard.writeText(texto_out.value);
 }
 
 const enc = document.querySelector('#enc');
